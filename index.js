@@ -16,8 +16,6 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 async function run() {
   try {
     await client.connect();
-    // await client.db("handsaw-heaven").collection("products");
-    // const bookingsCollection = client.db("doctorsPortal").collection("bookings");
     const productsCollection = client.db("handsaw-heaven").collection("products");
     const specialCollection = client.db("handsaw-heaven").collection("special");
     const reviewCollection = client.db("handsaw-heaven").collection("reivews");
