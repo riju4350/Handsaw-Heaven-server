@@ -199,12 +199,19 @@ async function run() {
       const addProduct = await productsCollection.insertOne(product);
       res.send(addProduct);
     });
-    // DELETE
+    // DELETE product
     app.delete("/products/:id", async (req, res) => {
       const id = req.params.id;
       const query = { _id: ObjectId(id) };
       const removeProduct = await productsCollection.deleteOne(query);
       res.send(removeProduct);
+    });
+    // DELETE user
+    app.delete("/user/:id", async (req, res) => {
+      const email = req.params.email;
+      const query = { email: email };
+      const removeUser = await userCollection.deleteOne(query);
+      res.send(removeUser);
     });
 
     console.log("Connected successfully to server");
