@@ -199,6 +199,13 @@ async function run() {
       const addProduct = await productsCollection.insertOne(product);
       res.send(addProduct);
     });
+    // DELETE
+    app.delete("/products/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: ObjectId(id) };
+      const removeProduct = await productsCollection.deleteOne(query);
+      res.send(removeProduct);
+    });
 
     console.log("Connected successfully to server");
   } finally {
