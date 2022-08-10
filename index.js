@@ -208,8 +208,8 @@ async function run() {
     });
     // DELETE user
     app.delete("/user/:id", async (req, res) => {
-      const email = req.params.email;
-      const query = { email: email };
+      const id = req.params.id;
+      const query = { _id: ObjectId(id) };
       const removeUser = await userCollection.deleteOne(query);
       res.send(removeUser);
     });
