@@ -92,6 +92,14 @@ async function run() {
       }
     });
 
+    // DELETE
+    app.delete("/orders/:id", async (req, res) => {
+      const order = req.params.id;
+      const query = { _id: ObjectId(order) };
+      const removeOrder = await ordersCollection.deleteOne(query);
+      res.send(removeOrder);
+    });
+
     //Post
     app.post("/orders", async (req, res) => {
       const order = req.body;
