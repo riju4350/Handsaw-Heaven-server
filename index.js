@@ -193,6 +193,13 @@ async function run() {
       res.send(users);
     });
 
+    // Post
+    app.post("/addProduct", async (req, res) => {
+      const product = req.body;
+      const addProduct = await productsCollection.insertOne(product);
+      res.send(addProduct);
+    });
+
     console.log("Connected successfully to server");
   } finally {
     // await client.close();
@@ -201,7 +208,7 @@ async function run() {
 run().catch(console.dir);
 
 app.get("/", (req, res) => {
-  res.send("Handsaw Heaven!");
+  res.send("Handsaw Heaven server is running!");
 });
 
 app.listen(port, () => {
